@@ -50,6 +50,13 @@ func _on_body_entered(body: Node) -> void:
 func crash_sequence() -> void:
 	print("CRASHED")
 	explosion_particles.emitting = true
+	
+	# Get rocket to stop audio and particles
+	left_booster_particles.emitting = false
+	right_booster_particles.emitting = false
+	booster_particles.emitting = false
+	rocket_audio.stop()
+	
 	explosion_audio.play()
 	
 	# Disable _process function
