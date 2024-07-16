@@ -1,7 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://ditowevkkebx"]
+[gd_scene load_steps=5 format=3 uid="uid://ditowevkkebx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4swv8"]
 albedo_color = Color(0.47451, 0.384314, 0.32549, 1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lqdiy"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_ufw6i"]
+sky_material = SubResource("ProceduralSkyMaterial_lqdiy")
+
+[sub_resource type="Environment" id="Environment_vjfij"]
+background_mode = 1
+background_color = Color(0.113725, 0.0901961, 0.0705882, 1)
+sky = SubResource("Sky_ufw6i")
+tonemap_mode = 2
+glow_enabled = true
 
 [node name="Floor" type="CSGBox3D" groups=["Hazard"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
@@ -9,132 +23,156 @@ use_collision = true
 size = Vector3(30, 8, 5)
 material = SubResource("StandardMaterial3D_4swv8")
 
-[node name="Wall" type="CSGBox3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.899709, -0.265928, 0.34613, 0.206505, 0.957952, 0.199208, -0.384551, -0.107752, 0.916794, 0, 4.78862, 13)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vjfij")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+omni_range = 10.0
+omni_attenuation = 0.5
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.16311, 10, 0)
+omni_range = 10.0
+omni_attenuation = 0.5
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.3305, 10, 0)
+omni_range = 10.0
+omni_attenuation = 0.5
+
+[node name="Rocks" type="Node3D" parent="."]
+
+[node name="Wall" type="CSGBox3D" parent="Rocks"]
 transform = Transform3D(0.985351, -0.170536, 0, 0.170536, 0.985351, 0, 0, 0, 1, -14.2857, 5.18666, 0)
 size = Vector3(4, 10, 4)
 material = SubResource("StandardMaterial3D_4swv8")
 
-[node name="Wall2" type="CSGBox3D" parent="."]
+[node name="Wall2" type="CSGBox3D" parent="Rocks"]
 transform = Transform3D(0.944652, 0.328075, 0, -0.328075, 0.944652, 0, 0, 0, 1, -14.2847, 12.0594, 0)
 size = Vector3(4, 10, 4)
 material = SubResource("StandardMaterial3D_4swv8")
 
-[node name="Wall3" type="CSGBox3D" parent="."]
+[node name="Wall3" type="CSGBox3D" parent="Rocks"]
 transform = Transform3D(0.944652, 0.328075, 0, -0.328075, 0.944652, 0, 0, 0, 1, 15.8296, 8.06827, 0)
 size = Vector3(4, 10, 4)
 material = SubResource("StandardMaterial3D_4swv8")
 
-[node name="Wall4" type="CSGBox3D" parent="."]
+[node name="Wall4" type="CSGBox3D" parent="Rocks"]
 transform = Transform3D(0.92591, -0.377744, 0, 0.377744, 0.92591, 0, 0, 0, 1, 15.8296, 16.5126, 0)
 size = Vector3(4, 10, 4)
 material = SubResource("StandardMaterial3D_4swv8")
 
-[node name="Ceiling" type="CSGBox3D" parent="."]
+[node name="Ceiling" type="CSGBox3D" parent="Rocks"]
 transform = Transform3D(-0.125818, 0.992054, 0, -0.992054, -0.125818, 0, 0, 0, 1, -9.34888, 16.7728, 0)
 size = Vector3(4, 10, 4)
 material = SubResource("StandardMaterial3D_4swv8")
 
-[node name="Ceiling2" type="CSGBox3D" parent="."]
+[node name="Ceiling2" type="CSGBox3D" parent="Rocks"]
 transform = Transform3D(0.318959, 0.947769, 0, -0.947769, 0.318959, 0, 0, 0, 1, -0.652995, 17.4135, 0)
 size = Vector3(4, 10, 4)
 material = SubResource("StandardMaterial3D_4swv8")
 
-[node name="Ceiling3" type="CSGBox3D" parent="."]
+[node name="Ceiling3" type="CSGBox3D" parent="Rocks"]
 transform = Transform3D(-0.0805817, 0.996748, 0, -0.996748, -0.0805817, 0, 0, 0, 1, 4.21854, 18.3259, 0)
 size = Vector3(4, 10, 4)
 material = SubResource("StandardMaterial3D_4swv8")
 
-[node name="Ceiling4" type="CSGBox3D" parent="."]
+[node name="Ceiling4" type="CSGBox3D" parent="Rocks"]
 transform = Transform3D(0.218177, 0.975909, 0, -0.975909, 0.218177, 0, 0, 0, 1, 11.804, 17.6364, 0)
 size = Vector3(4, 10, 4)
 material = SubResource("StandardMaterial3D_4swv8")
 
-[node name="BGRock" type="CSGBox3D" parent="."]
+[node name="BGRock" type="CSGBox3D" parent="Rocks"]
 transform = Transform3D(0.444121, -0.273442, 0.853221, 0.47782, 0.877852, 0.0326199, -0.757921, 0.393199, 0.520528, -11.5358, 1.46301, -12.9089)
 size = Vector3(4, 16, 4)
 material = SubResource("StandardMaterial3D_4swv8")
 
-[node name="BGRock13" type="CSGBox3D" parent="."]
+[node name="BGRock13" type="CSGBox3D" parent="Rocks"]
 transform = Transform3D(-0.1826, -0.0892616, 0.979127, 0.546068, 0.818938, 0.176496, -0.817599, 0.566898, -0.100795, -13.2317, -0.863572, -8.96261)
 size = Vector3(4, 16, 4)
 material = SubResource("StandardMaterial3D_4swv8")
 
-[node name="BGRock2" type="CSGBox3D" parent="."]
+[node name="BGRock2" type="CSGBox3D" parent="Rocks"]
 transform = Transform3D(0.806126, -0.34574, 0.480235, 0.401258, 0.915855, -0.0141934, -0.434918, 0.204139, 0.877025, -8.89093, 4.17416, -12.9089)
 size = Vector3(4, 16, 4)
 material = SubResource("StandardMaterial3D_4swv8")
 
-[node name="BGRock3" type="CSGBox3D" parent="."]
+[node name="BGRock3" type="CSGBox3D" parent="Rocks"]
 transform = Transform3D(0.688769, -0.291479, 0.663806, 0.401257, 0.915855, -0.0141934, -0.603813, 0.276133, 0.74777, -3.66518, -1.72666, -8.5025)
 size = Vector3(4, 16, 4)
 material = SubResource("StandardMaterial3D_4swv8")
 
-[node name="BGRock4" type="CSGBox3D" parent="."]
+[node name="BGRock4" type="CSGBox3D" parent="Rocks"]
 transform = Transform3D(0.853432, -0.450472, 0.262164, 0.461313, 0.886957, 0.0223147, -0.24258, 0.101895, 0.964765, -0.886678, 1.41316, -11.9599)
 size = Vector3(4, 16, 4)
 material = SubResource("StandardMaterial3D_4swv8")
 
-[node name="BGRock8" type="CSGBox3D" parent="."]
+[node name="BGRock8" type="CSGBox3D" parent="Rocks"]
 transform = Transform3D(0.712375, -0.490409, -0.502017, 0.596765, 0.799731, 0.065585, 0.369315, -0.346307, 0.862368, 10.597, 1.41316, -11.9599)
 size = Vector3(4, 16, 4)
 material = SubResource("StandardMaterial3D_4swv8")
 
-[node name="BGRock10" type="CSGBox3D" parent="."]
+[node name="BGRock10" type="CSGBox3D" parent="Rocks"]
 transform = Transform3D(0.847921, -0.46092, 0.261882, 0.471364, 0.881572, 0.0254107, -0.24258, 0.101895, 0.964765, 16.227, -0.200772, -11.9599)
 size = Vector3(4, 16, 4)
 material = SubResource("StandardMaterial3D_4swv8")
 
-[node name="BGRock12" type="CSGBox3D" parent="."]
+[node name="BGRock12" type="CSGBox3D" parent="Rocks"]
 transform = Transform3D(0.957473, -0.13498, 0.255003, 0.156208, 0.985595, -0.0648186, -0.24258, 0.101895, 0.964765, 19.4202, -2.59295, -11.9599)
 size = Vector3(4, 16, 4)
 material = SubResource("StandardMaterial3D_4swv8")
 
-[node name="BGRock9" type="CSGBox3D" parent="."]
+[node name="BGRock9" type="CSGBox3D" parent="Rocks"]
 transform = Transform3D(0.92561, -0.378454, 0.00443438, 0.378467, 0.925611, -0.00259849, -0.00312111, 0.00408345, 0.999987, 10.9423, -4.20926, -9.84178)
 size = Vector3(4, 16, 4)
 material = SubResource("StandardMaterial3D_4swv8")
 
-[node name="BGRock6" type="CSGBox3D" parent="."]
+[node name="BGRock6" type="CSGBox3D" parent="Rocks"]
 transform = Transform3D(-0.795229, -0.548984, 0.257345, 0.602357, -0.763732, 0.232119, 0.0691133, 0.339602, 0.938027, 22.1892, 18.164, -15.7208)
 size = Vector3(4, 16, 4)
 material = SubResource("StandardMaterial3D_4swv8")
 
-[node name="BGRock16" type="CSGBox3D" parent="."]
+[node name="BGRock16" type="CSGBox3D" parent="Rocks"]
 transform = Transform3D(-0.917917, -0.395334, -0.0337531, 0.377651, -0.896603, 0.231263, -0.121689, 0.199534, 0.972305, 10.3249, 20.1675, -14.4687)
 size = Vector3(4, 16, 4)
 material = SubResource("StandardMaterial3D_4swv8")
 
-[node name="BGRock7" type="CSGBox3D" parent="."]
+[node name="BGRock7" type="CSGBox3D" parent="Rocks"]
 transform = Transform3D(-0.739102, -0.423806, 0.523562, 0.602357, -0.763732, 0.232119, 0.301488, 0.486931, 0.819758, 18.4832, 22.8636, -17.0771)
 size = Vector3(4, 16, 4)
 material = SubResource("StandardMaterial3D_4swv8")
 
-[node name="BGRock14" type="CSGBox3D" parent="."]
+[node name="BGRock14" type="CSGBox3D" parent="Rocks"]
 transform = Transform3D(-0.794588, -0.545963, 0.265619, 0.602357, -0.763732, 0.232119, 0.0761335, 0.344437, 0.935717, -1.43316, 21.0452, -21.3125)
 size = Vector3(4, 16, 4)
 material = SubResource("StandardMaterial3D_4swv8")
 
-[node name="BGRock17" type="CSGBox3D" parent="."]
+[node name="BGRock17" type="CSGBox3D" parent="Rocks"]
 transform = Transform3D(-0.591582, -0.231896, 0.772175, 0.346259, -0.937996, -0.0164173, 0.728104, 0.25766, 0.635197, 2.92301, 23.5147, -23.7632)
 size = Vector3(4, 16, 4)
 material = SubResource("StandardMaterial3D_4swv8")
 
-[node name="BGRock15" type="CSGBox3D" parent="."]
+[node name="BGRock15" type="CSGBox3D" parent="Rocks"]
 transform = Transform3D(-0.661065, -0.31431, 0.681323, 0.602357, -0.763732, 0.232119, 0.447391, 0.563846, 0.694204, -12.0615, 20.9108, -24.7281)
 size = Vector3(4, 16, 4)
 material = SubResource("StandardMaterial3D_4swv8")
 
-[node name="BGRock18" type="CSGBox3D" parent="."]
+[node name="BGRock18" type="CSGBox3D" parent="Rocks"]
 transform = Transform3D(-0.370555, -0.00998217, 0.928757, 0.602357, -0.763732, 0.232119, 0.707005, 0.645456, 0.289018, -16.6724, 20.9108, -18.3973)
 size = Vector3(4, 16, 4)
 material = SubResource("StandardMaterial3D_4swv8")
 
-[node name="BGRock5" type="CSGBox3D" parent="."]
+[node name="BGRock5" type="CSGBox3D" parent="Rocks"]
 transform = Transform3D(0.785431, -0.364828, 0.5, 0.39022, 0.918923, 0.0575157, -0.480445, 0.149936, 0.864113, 5.94978, -2.00577, -11.9599)
 size = Vector3(4, 16, 4)
 material = SubResource("StandardMaterial3D_4swv8")
 
-[node name="BGRock11" type="CSGBox3D" parent="."]
+[node name="BGRock11" type="CSGBox3D" parent="Rocks"]
 transform = Transform3D(0.540977, -0.407292, 0.735838, 0.487049, 0.864993, 0.12071, -0.685659, 0.293088, 0.666312, 3.46405, 1.20287, -17.8015)
 size = Vector3(4, 16, 4)
 material = SubResource("StandardMaterial3D_4swv8")
