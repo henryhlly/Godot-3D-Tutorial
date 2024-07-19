@@ -20,3 +20,8 @@ func _process(delta: float) -> void:
 			var collision_point = ray_cast_3d.get_collision_point()
 			# Get the position in terms of grid map cells
 			var cell = grid_map.local_to_map(collision_point)
+			
+			# Check if colliding cell is the free space
+			if grid_map.get_cell_item(cell) == 0:
+				# Change the cell to the turret space
+				grid_map.set_cell_item(cell, 1)
