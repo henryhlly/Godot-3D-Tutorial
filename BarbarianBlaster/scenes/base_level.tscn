@@ -108,11 +108,19 @@ transform = Transform3D(0.000101044, 0, -0.999978, 0, 1, 0, 0.999978, 0, 0.00010
 progress = 10.0
 
 [node name="Enemy4" parent="Path3D" instance=ExtResource("2_ryd36")]
+<<<<<<< HEAD
 transform = Transform3D(0.996718, 0, -0.0806759, 0, 1, 0, 0.0806759, 0, 0.996718, -9.72522, 0, 5.16956)
 progress = 15.0
 
 [node name="Enemy5" parent="Path3D" instance=ExtResource("2_ryd36")]
 transform = Transform3D(0.995207, 0, 0.097575, 0, 1, 0, -0.097575, 0, 0.995207, -10.2318, 0, 0.20117)
+=======
+transform = Transform3D(0.996718, 0, -0.0806758, 0, 1, 0, 0.0806758, 0, 0.996718, -9.72522, 0, 5.16956)
+progress = 15.0
+
+[node name="Enemy5" parent="Path3D" instance=ExtResource("2_ryd36")]
+transform = Transform3D(0.995207, 0, 0.0975751, 0, 1, 0, -0.0975751, 0, 0.995207, -10.2318, 0, 0.20117)
+>>>>>>> parent of a45e0e7 (Restart 3D tutorial)
 progress = 20.0
 
 [node name="Base" parent="." instance=ExtResource("3_13ln8")]
